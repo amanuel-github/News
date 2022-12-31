@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:NewsManagementForm.Behaviors"
+             x:Class="NewsManagementForm.Views.NewsItemView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding Save}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Orientation="Vertical"
+                     VerticalOptions="Center"
+                     Spacing="20"
+                     Padding="20">
+        <ScrollView>
+            <StackLayout>
+            <Entry Text="{Binding Title}" 
+                   Placeholder="Title">
+                <Entry.Behaviors>
+                        <behaviors:EntryLengthValidator MaxLength="10" MinLength="5"/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry Text="{Binding ReportName}" 
+                   Placeholder="Report Name"/>
+            <Entry Text="{Binding Status}" 
+                   Placeholder="Status"/>
+
+                <DatePicker  MinimumDate="{Binding MinDate}"
+            MaximumDate="{Binding MaxDate}"
+            Date="{Binding DateCreated}" />
+                <Label Text="News Category"/>
+                <Picker x:Name="items"
+                    ItemsSource="{Binding categorys}"
+        SelectedIndexChanged="Picker_SelectedIndexChanged"
+                    ItemDisplayBinding="{Binding Name}"   SelectedItem="{Binding NewsCategoryId,Mode=TwoWay}"  
+                    />
+
+                <Entry Text="{Binding NewsCategoryId}"  TextColor="Teal"/>
+            
+
+              
+                <StackLayout    HeightRequest="1000" BackgroundColor="#00A4C7" Padding="1">
+                    <ScrollView HeightRequest="1000">
+                    <Editor Text="{Binding Body}" HeightRequest="1000"  TextColor="Black" BackgroundColor="White" 
+                        HorizontalOptions="FillAndExpand" >
+                        </Editor>
+                    </ScrollView>
+                </StackLayout>
+         
+       
+        </StackLayout>
+
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

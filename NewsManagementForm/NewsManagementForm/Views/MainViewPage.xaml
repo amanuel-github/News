@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NewsManagementForm.Views.MainView">
+    
+   
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddItem}" />
+        
+    </ContentPage.ToolbarItems>    <StackLayout>
+        <SearchBar Placeholder="Search..." TextChanged="SearchBar_TextChanged"></SearchBar>
+
+
+        <ScrollView>
+
+
+            <ListView x:Name="ListView"  HasUnevenRows="True" ItemTapped="GoToEditNewsPage_ItemTapped">
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <StackLayout BackgroundColor="#DDE9FA">
+
+                                <ContentView Padding="5">
+                                    <Frame OutlineColor="DodgerBlue"  Padding="5">
+                                        <StackLayout Orientation="Horizontal">
+                                            <BoxView Color="DodgerBlue" WidthRequest="3"  HeightRequest="3" />
+                                            <StackLayout>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Title: " TextColor="Black" FontAttributes="Bold" />
+                                                            <Span Text="{Binding Title}"  FontSize="16"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Report Name: " TextColor="Black" FontAttributes="Bold" />
+                                                            <Span Text="{Binding ReportName}"  FontSize="16"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Status: "  TextColor="Black" FontAttributes="Bold" />
+                                                            <Span Text="{Binding Status}" FontSize="16"  TextColor="Black"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Body: "  TextColor="Black" FontAttributes="Bold" />
+                                                            <Span Text="{Binding Body}" FontSize="16" TextColor="ForestGreen"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </ContentView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
